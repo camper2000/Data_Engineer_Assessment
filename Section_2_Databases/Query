@@ -1,0 +1,6 @@
+SELECT Customer_Name, SUM(Price) From car INNER JOIN car_transaction USING(Serial_Number) GROUP BY Customer_Name;
+
+SELECT Manufacturer, Date_Time, 0 AS Current_Month INTO TEMP TABLE tmp From car INNER JOIN car_transaction USING(Serial_Number);
+UPDATE tmp SET Current_Month=1 WHERE Date_Time >= date_trunc('month', CURRENT_TIMESTAMP);
+SELECT Manufacturer, COUNT(Date_Time) AS Sales, SUM(Current_Month) AS Current_Month FROM tmp GROUP BY Manufacturer ORDER BY COUNT(Date_Time) DESC LIMIT 3;
+DROP TABLE tmp;
