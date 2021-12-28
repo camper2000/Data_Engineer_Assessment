@@ -2,5 +2,5 @@
 
 This repository is for Data Engineer Assessment. 
 
-Solution for each section are in separate folders
+Solutions for each section are in separate folders
 
